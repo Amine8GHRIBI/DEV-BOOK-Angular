@@ -1,0 +1,38 @@
+<app-navbarcomponent></app-navbarcomponent>
+
+<section class="container">
+    <h1 class="large text-primary">
+        Sign up
+    </h1>
+    <p class="lead">
+        <i class="fas fa-user"></i> Create your account
+    </p>
+    <form action="" class="form" (ngSubmit)="AddProfile()">
+        <div class="form-group">
+            <input type="text" [(ngModel)] ="newProfile.nom" name ="nom" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)] ="newProfile.prenom" name ="prenom" placeholder="Prenom">
+        </div>
+
+        <div class="form-group">
+            <input type="email" [(ngModel)] ="newProfile.mail" name="prenom" placeholder="Email" value="">
+            <small class="form-text">
+                This site uses gravatar, so if you want a profile image, use a gravatar email
+            </small>
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password" [(ngModel)] ="newProfile.Mot_de_Passe" name="Mot_de_Passe" minlength="6" value="">
+        </div>
+       
+
+        <div class="form-group">
+            <input type="password" placeholder="Email" minlength="6" value="">
+        </div>
+        <button type="submit" class="btn btn-primary" > Register</button>
+    </form>
+    <p class="my-1">
+        Already have an account ? <a routerLink="/login">Sign In</a>
+    </p>
+</section>

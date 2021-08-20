@@ -1,0 +1,69 @@
+<app-navbar2></app-navbar2>
+<section class="container" >
+    <h1 class="large text-primary">
+        Posts
+    </h1>
+    <p class="lead">
+        <i class="fab fa-discourse"></i> Welcome to the community
+    </p>
+
+    <div class="post-form"  >
+        <div class="post-form-header bg-primary">
+            <h3>Say Something...</h3>
+        </div>
+        
+        <form class="form my-1" (ngSubmit)="addPost()">
+            <textarea cols="30" rows="5" placeholder="Create a post" [(ngModel)] = "newPost.post"></textarea>
+            <div class="col-md-6">
+            
+                <input type="file" (change)="onFileChanged($event)">
+    
+            </div>
+            <input type="submit" value="Submit" class="btn btn-dark my-1">
+            <input type="file" class="custom-file-input">
+            <div class="container row">
+                
+                    
+                
+                    <div class="col-md-6">
+                
+                       <!-- <input type="button" (click)="createfile ()" value="upload">--> 
+                
+                    </div>
+          
+                </div>
+
+        </form>
+
+
+        <div class="posts" *ngFor ="let ps of Posts" >
+            
+            <div class="post bg-white p-1 my-1" >
+                <div >
+                    <a href="profile.html">
+                       <img src="https://avatars.githubusercontent.com/u/55921843?s=400&u=84d93e251e0c55e3362b132168eaaf5e62e6511e&v=4"
+                            alt="" class="round-img">
+                        <h4>{{currentprofile.nom}} {{currentprofile.prenom}}</h4>
+                    </a>
+                </div>
+                <div  >
+                    <p class="my-1">
+                       {{ps.post}}
+                    </p>
+                   
+                    <button class="btn"  (click)="createStars(ps.id)" >
+                        <i class="fas fa-thumbs-up"></i> <span> {{Stars ? Stars.length : '0' }}</span>
+                    </button>
+                    <button class="btn">
+                        <i class="fas fa-thumbs-down"></i>
+                    </button>
+                    <a href="post.html" class="btn btn-primary">
+                        Discussion
+                    </a>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</section>

@@ -1,0 +1,88 @@
+<app-navbar2></app-navbar2>
+<section class="container"   *ngIf="isLoggedIn" >
+    <h1 class="large text-primary"  *ngIf="currentUser">
+        Dashboard
+    </h1>
+    <p class="lead">
+        <i class="fas fa-user"></i> {{currentprofile.nom}} {{currentprofile.prenom}}
+    </p>
+    <div class="dash-buttons">
+        <a routerLink="/create-profile" class="btn">
+            <i class="fas fa-user-circle text-primary"></i> Edit Profile
+        </a>
+        <a routerLink="/experience" class="btn">
+            <i class="fas fa-user-tie text-primary"></i> Add Experience
+        </a>
+        <a routerLink="/add-education" class="btn">
+            <i class="fas fa-user-graduate text-primary"></i> Add Education
+        </a>
+    </div>
+
+    <!-- Experiences   -->
+    <h2 class="my-2">
+        Experience Credentials 
+    </h2>
+  
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th class="hide-sm">Title</th>
+                <th class="hide-sm">Years</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody >
+            <tr *ngFor = "let exp of currentprofile.experiences" >
+                <td>{{exp.company}}</td>
+                <td class="hide-sm">{{exp.position}}</td>
+                <td class="hide-sm">{{exp.fromDate}} - {{exp.toDate}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="DeleteExperience(exp.id)">
+                        Delete
+                    </button >
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Educations -->
+    <h2 class="my-2">
+        Education Credentials
+    </h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>School</th>
+                <th class="hide-sm">Degree</th>
+                <th class="hide-sm">Field</th>
+                <th class="hide-sm">Years</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor = "let edu of currentprofile.educations"> 
+                
+                <td>{{edu.school}}</td>
+                <td class="hide-sm">{{edu.degree}}</td>
+                <td class="hide-sm">{{edu.field}}</td>
+                <td class="hide-sm">{{edu.fromDate}} - {{edu.toDate}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="DeleteEducation(edu.id)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="my-2">
+        <button class="btn btn-danger"   > 
+            <i class="fas fa-user-minus"></i> Delete My Account
+        </button>
+    </div>
+</section>
+
